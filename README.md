@@ -1,5 +1,7 @@
-# ASI
-Attention-Based Spatial Interpolation for House Price Prediction 
+# AMMASI
+Areal embedding based Masked Multihead Attention-based Spatial Interpolation for House Price Prediction
+
+Improved on top of [ASI](https://github.com/darniton/ASI/)
 
 ### Requirements
 
