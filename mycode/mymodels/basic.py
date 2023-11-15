@@ -222,12 +222,12 @@ from positional_encodings.tf_encodings import TFPositionalEncoding2D, TFSummer
 
 
 
-class MyBasicNei(tf.keras.layers.Layer):
+class AMMASI(tf.keras.layers.Layer):
     def __init__(self, args, metadata):
         super().__init__()
         self.args = args
         self.metadata = metadata
-        self.model_name = f'MyBasicNei'
+        self.model_name = f'AMMASI'
         self.num_features = metadata['num_features']
         self.y_mean = metadata['y_mean']
         self.y_std = metadata['y_std']
@@ -235,20 +235,23 @@ class MyBasicNei(tf.keras.layers.Layer):
         self.K = args.K
         self.d = args.d
         self.sigma = args.sigma
-        #self.adj_mx = metadata['adj_mx']
+        self.sigma2 = args.sigma2
         self.max_neighboridx = metadata['max_neighboridx']
         self.train_features = metadata['Train_features']
         self.ncols = metadata['ncols']
         self.nrows = metadata['nrows']
         self.args = args
 
-        self.grid_emb = metadata['grid_emb']
-        if args.use_sinsinoidal:
+        
+        if args.use_sinusoidal:
             p_enc_2d = TFPositionalEncoding2D(64)
             y = tf.zeros((1,100,100,64))
             image = p_enc_2d(y).numpy()
             image = image.squeeze(0)
             self.grid_emb = image
+        else:
+            self.grid_emb = metadata['grid_emb']
+            print('self.grid_emb', self.grid_emb.shape)
 
 
         
@@ -257,22 +260,8 @@ class MyBasicNei(tf.keras.layers.Layer):
                                 layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D),
                                 ])
-                                
-        # self.grid_emb = self.add_weight(shape=(1, self.nrows, self.ncols, self.D),
-        #                                     initializer='random_normal',
-        #                                     trainable=True, name='grid_emb')
-        #self.grid_emb = positional_encoding_2d((self.nrows, self.ncols), self.D)
 
-        #self.grid_cnn = tf.keras.layers.Conv2D(self.D, 3, padding="same")
-
-        # self.house_emb = self.add_weight(shape=(self.max_neighboridx, self.D),
-        #                                     initializer='random_normal',
-        #                                     trainable=True, name='house_emb')
-        # self.house_emb_layer = Sequential([
-        #                         layers.Dense(self.D, activation='relu'),
-        #                         layers.Dense(self.D),
-        #                         layers.Normalization()
-        #                         ])
+        # Geographical Neighbor House Attention
         self.house_emb_layer_q = Sequential([
                                 layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D),
@@ -285,7 +274,13 @@ class MyBasicNei(tf.keras.layers.Layer):
                                 layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D),
                                 ])
+        self.house_emb_out = Sequential([
+                                layers.Dense(self.D, activation='elu'),
+                                layers.Dense(self.D),
+                                ])
+
                                 
+        # Euclidian Similar House Attention
         self.house_emb_layer2_q = Sequential([
                                 layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D),
@@ -298,16 +293,14 @@ class MyBasicNei(tf.keras.layers.Layer):
                                 layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D),
                                 ])
-        # self.house_emb_out = Sequential([
-        #                         layers.Dense(self.D, activation='elu'),
-        #                         layers.Dense(self.D),
-        #                         ])
+        self.house_emb_out2 = Sequential([
+                                layers.Dense(self.D, activation='elu'),
+                                layers.Dense(self.D),
+                                ])
 
 
         self.output_layer = Sequential([
-                                # layers.Dense(self.D, activation='elu'),
                                 layers.Dense(self.D, activation='elu'),
-                                # layers.Dense(self.D, activation='leaky_relu'),
                                 layers.Dense(1)])
 
     def call(self, X, Nidx, Ndist, Eidx, Edist):
@@ -318,13 +311,11 @@ class MyBasicNei(tf.keras.layers.Layer):
 
         X = self.input_layer(X[:, 2:])
 
-        grid_emb = tf.expand_dims(self.grid_emb, 0)
-        # grid_emb = self.grid_cnn(grid_emb)
-
-
-        grid_emb = tf.squeeze(grid_emb, 0)
-        grid_emb = tf.reshape(grid_emb, (grid_emb.shape[0]*grid_emb.shape[1], -1))
-        grid_emb = tf.gather(grid_emb, X_idx)
+        if self.args.use_areaemb:
+            grid_emb = tf.expand_dims(self.grid_emb, 0)
+            grid_emb = tf.squeeze(grid_emb, 0)
+            grid_emb = tf.reshape(grid_emb, (grid_emb.shape[0]*grid_emb.shape[1], -1))
+            grid_emb = tf.gather(grid_emb, X_idx)
 
 
 
@@ -353,9 +344,8 @@ class MyBasicNei(tf.keras.layers.Layer):
         attention = tf.nn.softmax(attention, axis = -1)
         neigh_emb = tf.matmul(attention, v_emb)
         neigh_emb = tf.squeeze(neigh_emb, 1)
-
         neigh_emb = tf.concat(tf.split(neigh_emb, self.K, axis = 0), axis = -1)
-
+        neigh_emb = self.house_emb_out(neigh_emb)
 
         
         ################
@@ -372,7 +362,7 @@ class MyBasicNei(tf.keras.layers.Layer):
         attention = tf.matmul(q_emb, k_emb)
         attention /= (self.d ** 0.5)
 
-        mask = Edist < 0.02
+        mask = Edist < self.sigma2
         mask = tf.expand_dims(mask, 1)
         mask = tf.tile(mask, multiples = (self.K, 1, 1))
 
@@ -383,17 +373,14 @@ class MyBasicNei(tf.keras.layers.Layer):
         attention = tf.nn.softmax(attention, axis = -1)
         neigh_emb2 = tf.matmul(attention, v_emb)
         neigh_emb2 = tf.squeeze(neigh_emb2, 1)
-
         neigh_emb2 = tf.concat(tf.split(neigh_emb2, self.K, axis = 0), axis = -1)
+        neigh_emb2 = self.house_emb_out2(neigh_emb2)
 
 
-
-        if self.args.use_latlon:
+        if self.args.use_areaemb:
             output = self.output_layer(tf.concat((X, neigh_emb, neigh_emb2, grid_emb), -1))
         else:
             output = self.output_layer(tf.concat((X, neigh_emb, neigh_emb2), -1))
-        # output = self.output_layer(X + neigh_emb)
-
 
         return output * self.y_std + self.y_mean
     

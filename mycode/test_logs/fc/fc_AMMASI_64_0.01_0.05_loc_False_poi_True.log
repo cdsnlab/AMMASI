@@ -1,0 +1,71 @@
+2023-11-15 20:35:26,519 - Namespace(dataset='fc', use_areaemb=False, use_locfeat=False, use_sinusoidal=False, use_poiprox=True, model_name='AMMASI', restore_model=False, train_again=False, D=64, K=8, d=8, sigma=0.01, sigma2=0.05, val_ratio=0.1, batch_size=250, max_epoch=100, optimizer='adam', learning_rate=0.008, patience_stop=10, patience_lr=5)
+2023-11-15 20:35:31,240 - Epoch 1: {'loss': 0.14766769111156464, 'root_mean_squared_error': 0.26626136898994446, 'val_loss': 0.133133664727211, 'val_root_mean_squared_error': 0.19821985065937042, 'lr': 0.008}
+2023-11-15 20:35:32,715 - Epoch 2: {'loss': 0.12312554568052292, 'root_mean_squared_error': 0.19398538768291473, 'val_loss': 0.11826091259717941, 'val_root_mean_squared_error': 0.18199999630451202, 'lr': 0.008}
+2023-11-15 20:35:34,186 - Epoch 3: {'loss': 0.12042304128408432, 'root_mean_squared_error': 0.19121108949184418, 'val_loss': 0.11426261812448502, 'val_root_mean_squared_error': 0.17645438015460968, 'lr': 0.008}
+2023-11-15 20:35:35,686 - Epoch 4: {'loss': 0.12017446756362915, 'root_mean_squared_error': 0.19097214937210083, 'val_loss': 0.11263489723205566, 'val_root_mean_squared_error': 0.17505960166454315, 'lr': 0.008}
+2023-11-15 20:35:37,095 - Epoch 5: {'loss': 0.11814004927873611, 'root_mean_squared_error': 0.1888670176267624, 'val_loss': 0.12238480150699615, 'val_root_mean_squared_error': 0.1896389275789261, 'lr': 0.008}
+2023-11-15 20:35:38,165 - Test epoch: 5 	 fc 	 (0.12488398, 28385.004, 0.08698444309346146)
+2023-11-15 20:35:39,612 - Epoch 6: {'loss': 0.1163744330406189, 'root_mean_squared_error': 0.18706488609313965, 'val_loss': 0.11771681904792786, 'val_root_mean_squared_error': 0.18360860645771027, 'lr': 0.008}
+2023-11-15 20:35:41,027 - Epoch 7: {'loss': 0.11773024499416351, 'root_mean_squared_error': 0.18846780061721802, 'val_loss': 0.11473226547241211, 'val_root_mean_squared_error': 0.17926903069019318, 'lr': 0.008}
+2023-11-15 20:35:42,491 - Epoch 8: {'loss': 0.11550956964492798, 'root_mean_squared_error': 0.18578410148620605, 'val_loss': 0.11034698039293289, 'val_root_mean_squared_error': 0.17685413360595703, 'lr': 0.008}
+2023-11-15 20:35:43,923 - Epoch 9: {'loss': 0.11527922004461288, 'root_mean_squared_error': 0.1862005591392517, 'val_loss': 0.10750652104616165, 'val_root_mean_squared_error': 0.1717078983783722, 'lr': 0.008}
+2023-11-15 20:35:45,344 - Epoch 10: {'loss': 0.11652176827192307, 'root_mean_squared_error': 0.18667052686214447, 'val_loss': 0.11155710369348526, 'val_root_mean_squared_error': 0.1750287562608719, 'lr': 0.008}
+2023-11-15 20:35:45,589 - Test epoch: 10 	 fc 	 (0.113962695, 26303.674, 0.07691488080074665)
+2023-11-15 20:35:47,091 - Epoch 11: {'loss': 0.11504591256380081, 'root_mean_squared_error': 0.185415580868721, 'val_loss': 0.1070023849606514, 'val_root_mean_squared_error': 0.17160508036613464, 'lr': 0.008}
+2023-11-15 20:35:48,506 - Epoch 12: {'loss': 0.11403786391019821, 'root_mean_squared_error': 0.18442721664905548, 'val_loss': 0.1202334389090538, 'val_root_mean_squared_error': 0.19013886153697968, 'lr': 0.008}
+2023-11-15 20:35:49,906 - Epoch 13: {'loss': 0.11547591537237167, 'root_mean_squared_error': 0.18584372103214264, 'val_loss': 0.1114821508526802, 'val_root_mean_squared_error': 0.17807787656784058, 'lr': 0.008}
+2023-11-15 20:35:51,301 - Epoch 14: {'loss': 0.11398646980524063, 'root_mean_squared_error': 0.18412190675735474, 'val_loss': 0.10706521570682526, 'val_root_mean_squared_error': 0.17378327250480652, 'lr': 0.008}
+2023-11-15 20:35:52,706 - Epoch 15: {'loss': 0.11416038125753403, 'root_mean_squared_error': 0.1848183572292328, 'val_loss': 0.10961727052927017, 'val_root_mean_squared_error': 0.17384488880634308, 'lr': 0.008}
+2023-11-15 20:35:52,933 - Test epoch: 15 	 fc 	 (0.11292726, 26854.88, 0.07430100446428572)
+2023-11-15 20:35:54,320 - Epoch 16: {'loss': 0.11388957500457764, 'root_mean_squared_error': 0.18400928378105164, 'val_loss': 0.11024653166532516, 'val_root_mean_squared_error': 0.17614135146141052, 'lr': 0.008}
+2023-11-15 20:35:55,756 - Epoch 17: {'loss': 0.10702511668205261, 'root_mean_squared_error': 0.17711365222930908, 'val_loss': 0.10195528715848923, 'val_root_mean_squared_error': 0.16699844598770142, 'lr': 0.00080000004}
+2023-11-15 20:35:57,199 - Epoch 18: {'loss': 0.10590528696775436, 'root_mean_squared_error': 0.176145538687706, 'val_loss': 0.101266048848629, 'val_root_mean_squared_error': 0.16695334017276764, 'lr': 0.00080000004}
+2023-11-15 20:35:58,589 - Epoch 19: {'loss': 0.10554751008749008, 'root_mean_squared_error': 0.17606543004512787, 'val_loss': 0.10128350555896759, 'val_root_mean_squared_error': 0.16657938063144684, 'lr': 0.00080000004}
+2023-11-15 20:36:00,066 - Epoch 20: {'loss': 0.10532409697771072, 'root_mean_squared_error': 0.175667405128479, 'val_loss': 0.10122925043106079, 'val_root_mean_squared_error': 0.16635991632938385, 'lr': 0.00080000004}
+2023-11-15 20:36:00,310 - Test epoch: 20 	 fc 	 (0.10405206, 24952.404, 0.06795929430480013)
+2023-11-15 20:36:01,699 - Epoch 21: {'loss': 0.10499579459428787, 'root_mean_squared_error': 0.1753729283809662, 'val_loss': 0.10155241191387177, 'val_root_mean_squared_error': 0.16656158864498138, 'lr': 0.00080000004}
+2023-11-15 20:36:03,139 - Epoch 22: {'loss': 0.10477489233016968, 'root_mean_squared_error': 0.17528511583805084, 'val_loss': 0.10128845274448395, 'val_root_mean_squared_error': 0.16610649228096008, 'lr': 0.00080000004}
+2023-11-15 20:36:04,630 - Epoch 23: {'loss': 0.10485849529504776, 'root_mean_squared_error': 0.17550306022167206, 'val_loss': 0.10102701932191849, 'val_root_mean_squared_error': 0.1665382981300354, 'lr': 0.00080000004}
+2023-11-15 20:36:06,122 - Epoch 24: {'loss': 0.10476207733154297, 'root_mean_squared_error': 0.1754504293203354, 'val_loss': 0.10084386169910431, 'val_root_mean_squared_error': 0.16585767269134521, 'lr': 0.00080000004}
+2023-11-15 20:36:07,521 - Epoch 25: {'loss': 0.10451481491327286, 'root_mean_squared_error': 0.17506614327430725, 'val_loss': 0.10060346871614456, 'val_root_mean_squared_error': 0.16558420658111572, 'lr': 0.00080000004}
+2023-11-15 20:36:07,745 - Test epoch: 25 	 fc 	 (0.10362483, 24876.656, 0.06706031613817404)
+2023-11-15 20:36:09,137 - Epoch 26: {'loss': 0.10421547293663025, 'root_mean_squared_error': 0.17483989894390106, 'val_loss': 0.1010376587510109, 'val_root_mean_squared_error': 0.16616414487361908, 'lr': 0.00080000004}
+2023-11-15 20:36:10,554 - Epoch 27: {'loss': 0.10432787239551544, 'root_mean_squared_error': 0.17477348446846008, 'val_loss': 0.10136203467845917, 'val_root_mean_squared_error': 0.16622187197208405, 'lr': 0.00080000004}
+2023-11-15 20:36:11,962 - Epoch 28: {'loss': 0.10404525697231293, 'root_mean_squared_error': 0.17469923198223114, 'val_loss': 0.1020817831158638, 'val_root_mean_squared_error': 0.16759857535362244, 'lr': 0.00080000004}
+2023-11-15 20:36:13,372 - Epoch 29: {'loss': 0.10389009863138199, 'root_mean_squared_error': 0.17459246516227722, 'val_loss': 0.10093396157026291, 'val_root_mean_squared_error': 0.16654886305332184, 'lr': 0.00080000004}
+2023-11-15 20:36:14,736 - Epoch 30: {'loss': 0.10380856692790985, 'root_mean_squared_error': 0.17437604069709778, 'val_loss': 0.10180427134037018, 'val_root_mean_squared_error': 0.166522815823555, 'lr': 0.00080000004}
+2023-11-15 20:36:14,967 - Test epoch: 30 	 fc 	 (0.10448201, 25118.398, 0.06779298363095239)
+2023-11-15 20:36:16,377 - Epoch 31: {'loss': 0.10240283608436584, 'root_mean_squared_error': 0.1731908917427063, 'val_loss': 0.09990635514259338, 'val_root_mean_squared_error': 0.1652062088251114, 'lr': 8.0000005e-05}
+2023-11-15 20:36:17,809 - Epoch 32: {'loss': 0.10199721902608871, 'root_mean_squared_error': 0.17280544340610504, 'val_loss': 0.09981703013181686, 'val_root_mean_squared_error': 0.16537423431873322, 'lr': 8.0000005e-05}
+2023-11-15 20:36:19,275 - Epoch 33: {'loss': 0.10196047276258469, 'root_mean_squared_error': 0.17286072671413422, 'val_loss': 0.09974522888660431, 'val_root_mean_squared_error': 0.16527940332889557, 'lr': 8.0000005e-05}
+2023-11-15 20:36:20,743 - Epoch 34: {'loss': 0.10191238671541214, 'root_mean_squared_error': 0.17283114790916443, 'val_loss': 0.09972111880779266, 'val_root_mean_squared_error': 0.1648520678281784, 'lr': 8.0000005e-05}
+2023-11-15 20:36:22,194 - Epoch 35: {'loss': 0.10186929255723953, 'root_mean_squared_error': 0.17274990677833557, 'val_loss': 0.09983953088521957, 'val_root_mean_squared_error': 0.16515971720218658, 'lr': 8.0000005e-05}
+2023-11-15 20:36:22,450 - Test epoch: 35 	 fc 	 (0.102899574, 24811.197, 0.06604731238289252)
+2023-11-15 20:36:23,921 - Epoch 36: {'loss': 0.10183905810117722, 'root_mean_squared_error': 0.17279651761054993, 'val_loss': 0.09977893531322479, 'val_root_mean_squared_error': 0.1650204062461853, 'lr': 8.0000005e-05}
+2023-11-15 20:36:25,324 - Epoch 37: {'loss': 0.10175648331642151, 'root_mean_squared_error': 0.1726473718881607, 'val_loss': 0.09990575909614563, 'val_root_mean_squared_error': 0.16519905626773834, 'lr': 8.0000005e-05}
+2023-11-15 20:36:26,757 - Epoch 38: {'loss': 0.10171615332365036, 'root_mean_squared_error': 0.1726861447095871, 'val_loss': 0.09987387806177139, 'val_root_mean_squared_error': 0.16533052921295166, 'lr': 8.0000005e-05}
+2023-11-15 20:36:28,188 - Epoch 39: {'loss': 0.10153727233409882, 'root_mean_squared_error': 0.17256596684455872, 'val_loss': 0.09968391805887222, 'val_root_mean_squared_error': 0.1650695949792862, 'lr': 8.000001e-06}
+2023-11-15 20:36:29,657 - Epoch 40: {'loss': 0.10147805511951447, 'root_mean_squared_error': 0.17247797548770905, 'val_loss': 0.09965752810239792, 'val_root_mean_squared_error': 0.16514655947685242, 'lr': 8.000001e-06}
+2023-11-15 20:36:29,894 - Test epoch: 40 	 fc 	 (0.10287371, 24833.744, 0.06642681788067614)
+2023-11-15 20:36:31,373 - Epoch 41: {'loss': 0.10146725177764893, 'root_mean_squared_error': 0.17247748374938965, 'val_loss': 0.09965208172798157, 'val_root_mean_squared_error': 0.16510885953903198, 'lr': 8.000001e-06}
+2023-11-15 20:36:32,883 - Epoch 42: {'loss': 0.10146145522594452, 'root_mean_squared_error': 0.17245478928089142, 'val_loss': 0.099649578332901, 'val_root_mean_squared_error': 0.16508212685585022, 'lr': 8.000001e-06}
+2023-11-15 20:36:34,384 - Epoch 43: {'loss': 0.10145965218544006, 'root_mean_squared_error': 0.17247086763381958, 'val_loss': 0.09962979704141617, 'val_root_mean_squared_error': 0.16506090760231018, 'lr': 8.000001e-06}
+2023-11-15 20:36:35,780 - Epoch 44: {'loss': 0.10144913196563721, 'root_mean_squared_error': 0.17247024178504944, 'val_loss': 0.0996382087469101, 'val_root_mean_squared_error': 0.1651311218738556, 'lr': 8.000001e-06}
+2023-11-15 20:36:37,174 - Epoch 45: {'loss': 0.10144691169261932, 'root_mean_squared_error': 0.17246811091899872, 'val_loss': 0.09965065866708755, 'val_root_mean_squared_error': 0.16513238847255707, 'lr': 8.000001e-06}
+2023-11-15 20:36:37,427 - Test epoch: 45 	 fc 	 (0.10286748, 24827.682, 0.06638018585526316)
+2023-11-15 20:36:38,871 - Epoch 46: {'loss': 0.10144165903329849, 'root_mean_squared_error': 0.1724673956632614, 'val_loss': 0.09964320808649063, 'val_root_mean_squared_error': 0.1651286780834198, 'lr': 8.000001e-06}
+2023-11-15 20:36:40,245 - Epoch 47: {'loss': 0.10143979638814926, 'root_mean_squared_error': 0.17244163155555725, 'val_loss': 0.09964165836572647, 'val_root_mean_squared_error': 0.16512346267700195, 'lr': 8.000001e-06}
+2023-11-15 20:36:41,650 - Epoch 48: {'loss': 0.10142803937196732, 'root_mean_squared_error': 0.17248180508613586, 'val_loss': 0.09966538846492767, 'val_root_mean_squared_error': 0.16509364545345306, 'lr': 8.000001e-06}
+2023-11-15 20:36:43,061 - Epoch 49: {'loss': 0.1014024019241333, 'root_mean_squared_error': 0.17240992188453674, 'val_loss': 0.09965162724256516, 'val_root_mean_squared_error': 0.16509416699409485, 'lr': 8.0000007e-07}
+2023-11-15 20:36:44,457 - Epoch 50: {'loss': 0.10139857232570648, 'root_mean_squared_error': 0.17241926491260529, 'val_loss': 0.09964331984519958, 'val_root_mean_squared_error': 0.16509567201137543, 'lr': 8.0000007e-07}
+2023-11-15 20:36:44,691 - Test epoch: 50 	 fc 	 (0.102851346, 24821.135, 0.06642134707574301)
+2023-11-15 20:36:46,087 - Epoch 51: {'loss': 0.10139802098274231, 'root_mean_squared_error': 0.172427698969841, 'val_loss': 0.09964047372341156, 'val_root_mean_squared_error': 0.16509220004081726, 'lr': 8.0000007e-07}
+2023-11-15 20:36:47,526 - Epoch 52: {'loss': 0.1013970822095871, 'root_mean_squared_error': 0.17242561280727386, 'val_loss': 0.09963575005531311, 'val_root_mean_squared_error': 0.16509008407592773, 'lr': 8.0000007e-07}
+2023-11-15 20:36:48,979 - Epoch 53: {'loss': 0.10139613598585129, 'root_mean_squared_error': 0.17242302000522614, 'val_loss': 0.09963381290435791, 'val_root_mean_squared_error': 0.16509568691253662, 'lr': 8.0000007e-07}
+2023-11-15 20:36:50,494 - Test: 	AMMASI 	 fc 	 (0.10284408, 24813.756, 0.06631876694437269)
+2023-11-15 20:36:50,914 - Namespace(dataset='fc', use_areaemb=False, use_locfeat=False, use_sinusoidal=False, use_poiprox=True, model_name='AMMASI', restore_model=False, train_again=False, D=64, K=8, d=8, sigma=0.01, sigma2=0.05, val_ratio=0.1, batch_size=250, max_epoch=100, optimizer='adam', learning_rate=0.008, patience_stop=10, patience_lr=5)
+fc_AMMASI_64_0.01_0.05_loc_False_poi_True result
+AMMASI, fc, (0.10284408, 24813.756, 0.06631876694437269)
+Time elapsed (hh:mm:ss ms) 0:01:25.450832
+------------------------------------------
+

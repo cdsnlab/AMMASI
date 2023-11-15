@@ -57,12 +57,12 @@ def model_define(args, metadata):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='parameter')
     parser.add_argument('--dataset', type=str, choices=['fc', 'kc', 'sp', 'poa'], default='fc')
-    parser.add_argument('--use_latlon', action='store_true')
+    parser.add_argument('--use_areaemb', action='store_true')
     parser.add_argument('--use_locfeat', action='store_true')
 
-    parser.add_argument('--use_sinsinoidal', action='store_true')
+    parser.add_argument('--use_sinusoidal', action='store_true')
     parser.add_argument('--use_poiprox', action='store_true')
-    parser.add_argument('--model_name', type=str, default=f'MyBasicNei')
+    parser.add_argument('--model_name', type=str, default=f'AMMASI')
     parser.add_argument('--restore_model', action='store_true')
     parser.add_argument('--train_again', action='store_true')
     parser.add_argument('--D', type=int, default=64) # hidden dimension
@@ -109,12 +109,12 @@ if __name__ == "__main__":
     
     
     model, model_name = model_define(args, metadata)
-    latlon_type = args.use_latlon
-    if args.use_latlon and args.use_sinsinoidal:
-        latlon_type = 'Sinsinoidal'
+    latlon_type = args.use_areaemb
+    if args.use_areaemb and args.use_sinusoidal:
+        latlon_type = 'Sinusoidal'
     if args.use_locfeat:
         latlon_type = 'Locfeat'
-    if args.use_locfeat and args.use_latlon:
+    if args.use_locfeat and args.use_areaemb:
         import sys
         sys.exit(-1)
     model_logging_name = f'{args.dataset}_{model_name}_{args.D}_{args.sigma}_{args.sigma2}_loc_{latlon_type}_poi_{args.use_poiprox}'
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     model_logs = f'./model_logs/{args.dataset}/{model_logging_name}'
 
 
-    # if os.path.isfile(f'prediction/{args.dataset}/{model_logging_name}.npy') and not args.use_latlon:
+    # if os.path.isfile(f'prediction/{args.dataset}/{model_logging_name}.npy') and not args.use_areaemb:
     #     import sys
     #     sys.exit(0)
     
@@ -180,6 +180,7 @@ if __name__ == "__main__":
     y_pred = model.predict((X_test, Nidx_test, Ndist_test, Eidx_test, Edist_test), batch_size=args.batch_size)
 
     print(model_name, args.dataset, utils.metric(np.exp(y_test), np.exp(y_pred)))
+    logging.info(f'Test: \t{model_name} \t {args.dataset} \t {utils.metric(np.exp(y_test), np.exp(y_pred))}')
 
 
     #########################
@@ -189,6 +190,7 @@ if __name__ == "__main__":
     slack_message += f'Time elapsed (hh:mm:ss ms) {time_elapsed}\n'
     slack_message += f'------------------------------------------\n'
     slack_test.slackBot.print(slack_message)
+    logging.info(slack_message)
 
 
     np.save(f'prediction/{args.dataset}/ground_truth.npy', y_test)
